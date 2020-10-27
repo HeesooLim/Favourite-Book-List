@@ -1,3 +1,10 @@
+/*
+  Author: Heesoo Lim
+  studentID: 301061152
+  Date: October 27, 2020
+  File Name: app.js
+*/
+
 // moddules for node and express
 let createError = require('http-errors');
 let express = require('express');

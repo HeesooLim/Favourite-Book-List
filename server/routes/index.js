@@ -1,3 +1,10 @@
+/*
+  Author: Heesoo Lim
+  studentID: 301061152
+  Date: October 27, 2020
+  File Name: index.js
+*/
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();

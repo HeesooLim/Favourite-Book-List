@@ -1,3 +1,10 @@
+/*
+  Author: Heesoo Lim
+  studentID: 301061152
+  Date: October 27, 2020
+  File Name: books.js
+*/
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -9,6 +16,7 @@ let book = require('../models/books');
 
 /* GET books List page. READ */
 router.get('/', (req, res, next) => {
+
   // find all books in the books collection
   book.find( (err, books) => {
     if (err) {
@@ -27,7 +35,7 @@ router.get('/', (req, res, next) => {
 //  GET the Book Details page in order to add a new Book
 router.get('/add', (req, res, next) => {
 
-    //  render the details page and pass values
+    // Render the details page and pass values
     res.render('books/details', {
       title: "Add a book",
       books: books
@@ -55,6 +63,7 @@ router.post('/add', (req, res, next) => {
       }
       else
       {
+        // Redirect to books page
         res.redirect('/books');
       }
     });
@@ -75,6 +84,7 @@ router.get('/:id', (req, res, next) => {
       }
       else
       {
+        // Render the details page and pass values
         res.render('books/details', {
           title: "Edit a book",
           books: book
@@ -99,7 +109,7 @@ router.post('/:id', (req, res, next) => {
       'Genre': req.body.genre
     });
 
-    // update a book record
+    // Update a book record
     books.update({_id: id}, editedBook, (err) => {
       if(err)
       {
@@ -108,6 +118,7 @@ router.post('/:id', (req, res, next) => {
       }
       else
       {
+        // Redirect to books page
         res.redirect('/books');
       }
     });
@@ -119,6 +130,7 @@ router.get('/delete/:id', (req, res, next) => {
 
   let id = req.params.id;
   
+  // Remove selected record from db
   books.remove({_id: id}, (err) => {
     if(err)
     {
@@ -127,6 +139,7 @@ router.get('/delete/:id', (req, res, next) => {
     }
     else
     {
+      // Redirect to books page
       res.redirect('/books');
     }
   });
